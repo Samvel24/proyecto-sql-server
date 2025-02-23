@@ -9,3 +9,5 @@ email varchar(50) null -- Si se permiten valores nulos en el campo email
 -- Ejemplos de inserción de valores nulos en campos que lo permiten
 insert into Clientes values(1, 'Juan', null, 1234567890, 'email@email.com');
 insert into Clientes values(2, 'Samuel', 'Calle 1', 9873451092, null);
+
+-- Nota: en caso de que se intente ingresar valores nulos a un campo que no lo permite, SQL Server va informar de un error y no va a permitir la inserción
