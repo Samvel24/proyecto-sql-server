@@ -21,5 +21,5 @@ Los temas relacionados a SQL Server se pueden visitar uno por uno en el siguient
 - [Restricción default](/contenidos/Constraint_default.sql)
 - [Restricción identity](/contenidos/Constraint_identity.sql)
 - [Foreign key](/contenidos/Constraint_foreign_key.sql)
-- [Vistas (views)](/contenidos/Vsitas.sql)
+- [Vistas (views)](/contenidos/Vistas.sql)
 - [Índices](/contenidos/Indices.sql)
