@@ -23,3 +23,4 @@ Los temas relacionados a SQL Server se pueden visitar uno por uno en el siguient
 - [Foreign key](/contenidos/Constraint_foreign_key.sql)
 - [Vistas (views)](/contenidos/Vistas.sql)
 - [Índices](/contenidos/Indices.sql)
+- [Mini proyecto de clínica de especialidades](/contenidos/Practica_clinica_especialidades/)
