@@ -94,4 +94,33 @@ INSERT INTO Citas VALUES(10, 2, 5, '2025-11-25', '17:00', 50, 'Ninguna');
 
 SELECT * FROM Citas;
 
+---------------------------------------------------------------------------------------------------------------------
+-- Creación de consulta multitabla usando la instrucción JOIN
 
+-- Se hace una consulta para devolver los resultados de 3 tablas diferentes por medio de INNER JOIN
+SELECT Citas.fechaCita, Citas.horaCita, Citas.costoCita, Pacientes.nombre, Pacientes.entidadFederativa, Medicos.nombre
+FROM Citas -- Citas es una tabla secundaria (tiene las llaves foráneas)
+INNER JOIN Pacientes ON Citas.idPaciente = Pacientes.idPaciente -- Pacientes es una tabla principal (tiene una llave primaria)
+INNER JOIN Medicos ON Citas.idMedico = Medicos.idMedico; -- Medicos es una tabla principal (tiene una llave primaria)
+
+SELECT Citas.fechaCita, Citas.horaCita, Medicos.nombre, Medicos.idMedico -- Consulta para mostrar la fecha, hora, nombre e id de cita pertencientes a un médico...
+FROM Citas
+INNER JOIN Medicos ON Citas.idMedico =  Medicos.idMedico
+WHERE Medicos.idMedico = 1; --... a partir del id de un médico
+
+-- Comprobando el funcionamiento de ON UPDATE CASCADE, se agrega un nuevo registro a cada tabla
+INSERT INTO Medicos VALUES(6, 'Raul', 'Peña', 'Médico general');
+INSERT INTO Pacientes VALUES(6, 'Julia', 'Orozco', 'Figueroa', 'Femenino', 51, 'Calle 3, No 21', 'Alta Villa', '33210', 'Estado de México', '5534120943', 'julia@micorreo.com');
+INSERT INTO Citas VALUES(11, 6, 6, '2025-09-25', '11:00', 50, 'Ninguna');
+
+UPDATE Medicos SET idMedico = 7 WHERE idMedico = 6; --Se actualiza el id del nuevo registro de médicos
+SELECT * FROM Medicos; -- Se verifica que el cambio de id se realizó en la tabla de Médicos
+SELECT * FROM Citas; -- Se verifica que el cambio de id se realizó en la tabla de Citas por medio de la activación de la opción ON UPDATE CASCADE
+
+UPDATE Pacientes SET idPaciente = 7 WHERE idPaciente = 6;
+SELECT * FROM Pacientes;
+SELECT * FROM Citas;
+
+-- Comprobando el funcionamiento de ON DELETE CASCADE
+DELETE FROM Medicos WHERE idMedico = 7;
+SELECT * FROM Citas; -- Corroboramos que la cita asociada al Médico de id con valor de 7 se ha borrado
